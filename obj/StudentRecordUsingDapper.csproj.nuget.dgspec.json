@@ -1,0 +1,74 @@
+{
+  "format": 1,
+  "restore": {
+    "/media/razz/New Volume/StudentRecordUsingDapper/StudentRecordUsingDapper.csproj": {}
+  },
+  "projects": {
+    "/media/razz/New Volume/StudentRecordUsingDapper/StudentRecordUsingDapper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/media/razz/New Volume/StudentRecordUsingDapper/StudentRecordUsingDapper.csproj",
+        "projectName": "StudentRecordUsingDapper",
+        "projectPath": "/media/razz/New Volume/StudentRecordUsingDapper/StudentRecordUsingDapper.csproj",
+        "packagesPath": "/home/razz/.nuget/packages/",
+        "outputPath": "/media/razz/New Volume/StudentRecordUsingDapper/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/razz/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.113/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

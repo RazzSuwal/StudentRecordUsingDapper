@@ -1,0 +1,121 @@
+@model StudentRecordUsingDapper.Models.ViewModels.StudentVM;
+@{
+    ViewData["Title"] = "Student Page";
+}
+
+@* <button class="btn btn-primary">Create New Student</button> *@
+@* <a asp-area="" asp-controller="Student" asp-action="CreateUpdate" class="btn btn-primary">Create New Student</a> *@
+<div>
+    <h4>Create/Update Student</h4>
+    <div class="row mb-5">
+    <div class="col-md-6">
+        <form method="post" asp-area="" asp-controller="Student" asp-action="CreateUpdate">
+            @Html.AntiForgeryToken()
+            <input type="hidden" id="StudentID" name="StudentID">
+            <div class="row mb-3">
+                <div class="col-12 mb-2">
+                    <label for="FullName">Enter Your FullName: </label>
+                    <input type="text" name="FullName" id="FullName">
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="Email">Enter Your Email: </label>
+                    <input type="email" name="Email" id="Email">
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="PhoneNumber">Enter Your PhoneNumber: </label>
+                    <input type="text" name="PhoneNumber" id="PhoneNumber">
+                </div>
+                
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+    </div>
+    <table class="table">
+        <thead>
+            <h4>Student Records</h4>
+            <tr>
+                <th scope="col">StudentId</th>
+                <th scope="col">FullName</th>
+                <th scope="col">Email</th>
+                <th scope="col">PhoneNumber</th>
+                <th scope="col">Created Time</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        @{
+            if(Model.StudentsList != null && Model.StudentsList.Count > 0){
+                foreach(var item in Model.StudentsList){
+                    <tbody>
+                        <tr>
+                            <th scope="row">@item.StudentID</th>
+                            <td>@item.FullName</td>
+                            <td>@item.Email</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.CreatedTime.ToString("dd-MMM-yyyy")</td>
+                            <td>
+                               <a onclick="UpdateStudentRecord('@item.StudentID', '@item.FullName', '@item.Email', '@item.PhoneNumber') "style="cursor:pointer;" >Update</a> || 
+                               <a onclick="DeleteStudentRecord('@item.StudentID')" style="cursor:pointer;">Delete</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                }
+            }
+            else{
+                <tbody>
+                    <tr>
+                        <th>Data Not Available
+
+                        </th>
+                    </tr>
+                </tbody> 
+            }
+        }
+        
+    </table>
+    <div class="col-md-6">
+        @{
+            @if(TempData["SuccessMsg"] != null){
+            <h2 class="bg-success">@TempData["SuccessMsg"]</h2>
+                
+            }
+            @if(TempData["ErrorMsg"] != null){
+            <h2 class="bg-danger">@TempData["ErrorMsg"]</h2>
+                
+            }
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    function DeleteStudentRecord(StudentID){
+        let reponse = confirm("Are you sure?");
+        if(reponse){
+            $.ajax({
+                type:"POST",
+                url:'@Url.Action("DeleteStudent","Student")',
+                data:{StudentID:StudentID},
+                success: function(response){
+                    if(response.message=="Student deleted successfully"){
+                        window.location.reload();
+                    }
+                    else{
+                        alert(response.message)
+                    }
+                },
+                complete: function(){},
+                failure: function(jqXHR, textStatus, errorThrown){
+                    alert("Error Occured!");
+                }
+            });
+        }
+    }
+
+    function UpdateStudentRecord(StudentID, FullName, Email, PhoneNumber){
+        $('#StudentID').val(StudentID);
+        $('#FullName').val(FullName);
+        $('#Email').val(Email);
+        $('#PhoneNumber').val(PhoneNumber);
+    }
+</script>
