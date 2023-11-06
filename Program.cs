@@ -1,11 +1,22 @@
 using StudentRecordUsingDapper.Services;
+using Microsoft.AspNetCore.Http;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor(); 
 builder.Services.AddSingleton<IStudentServices, StudentServices>();
 builder.Services.AddSingleton<IUserServices, UserServices>();
+// builder.Services.AddSession(options =>
+// {
+//     options.IdleTimeout = TimeSpan.FromMinutes(100);
+//     options.Cookie.HttpOnly = true;
+//     options.Cookie.IsEssential = true;
+// });
+builder.Services.AddSession();
+
 
 var app = builder.Build();
 
@@ -22,7 +33,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
+
 app.UseAuthorization();
+
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

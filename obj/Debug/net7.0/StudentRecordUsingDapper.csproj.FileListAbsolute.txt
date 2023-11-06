@@ -69,3 +69,4 @@
 /media/razz/New Volume/StudentRecordUsingDapper/obj/Debug/net7.0/StudentRecordUsingDapper.pdb
 /media/razz/New Volume/StudentRecordUsingDapper/obj/Debug/net7.0/StudentRecordUsingDapper.genruntimeconfig.cache
 /media/razz/New Volume/StudentRecordUsingDapper/obj/Debug/net7.0/ref/StudentRecordUsingDapper.dll
+/media/razz/New Volume/StudentRecordUsingDapper/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

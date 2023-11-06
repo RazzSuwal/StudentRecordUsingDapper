@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Cbi+396UVzx5U9ivJZMJ4dh+nriavueLuusFd6QbOWwFTf9bkyJit3dRi0Cn7rVts6s96NovkjImCeTOOst+3g==",
+  "dgSpecHash": "bbJn9K5oqxJXUDxdJgvu7otiJnQdG0+2miuVqew2uNB6zMdcKVd6IPC/ZfthcIcXavU4aHNdiPilJz653dDWjQ==",
   "success": true,
   "projectFilePath": "/media/razz/New Volume/StudentRecordUsingDapper/StudentRecordUsingDapper.csproj",
   "expectedPackageFiles": [
     "/home/razz/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/home/razz/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
     "/home/razz/.nuget/packages/dapper/2.1.15/dapper.2.1.15.nupkg.sha512",
+    "/home/razz/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.13/microsoft.aspnetcore.authentication.jwtbearer.7.0.13.nupkg.sha512",
     "/home/razz/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/home/razz/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/home/razz/.nuget/packages/microsoft.data.sqlclient/5.1.1/microsoft.data.sqlclient.5.1.1.nupkg.sha512",

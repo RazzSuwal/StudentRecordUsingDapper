@@ -40,8 +40,8 @@ namespace StudentRecordUsingDapper.Controllers
             if (result == "Register Successfully")
             {
 
-                TempData["SuccessMsg"] = "Register Successfully";
-                return Redirect(url);
+                // TempData["SuccessMsg"] = "Register Successfully";
+                return RedirectToAction("Login", "Login");
             }
             TempData["ErrorMsg"] = result;
             return Redirect(url);

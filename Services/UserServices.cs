@@ -21,15 +21,22 @@ namespace StudentRecordUsingDapper.Services
             providerName = "System.Data.SqlClient";
         }
 
-        public string ConnectionString{get;}
-        public string providerName{get;}
-        public IDbConnection connection{
-            get{return new SqlConnection(ConnectionString);}
+        public string ConnectionString { get; }
+        public string providerName { get; }
+        public IDbConnection connection
+        {
+            get { return new SqlConnection(ConnectionString); }
         }
 
-        public User AuthenticateUser(string userName, string password)
+        public User AuthenticateUser(string username, string password)
         {
-            throw new NotImplementedException();
+            using IDbConnection dbConnection = new SqlConnection(ConnectionString);
+            var parameters = new DynamicParameters();
+            parameters.Add("@Username", username);
+            parameters.Add("@Password", password);
+
+            var ur = dbConnection.QueryFirstOrDefault<User>("spAuthenticateUser", parameters, commandType: CommandType.StoredProcedure);
+            return ur;
         }
 
         // public async Task<User> AuthenticateUserAsync(string userName, string password)
@@ -41,15 +48,15 @@ namespace StudentRecordUsingDapper.Services
 
         public string RegisterUser(User user)
         {
-            string result ="";
+            string result = "";
             try
             {
-                using (IDbConnection dbConnection=connection)
+                using (IDbConnection dbConnection = connection)
                 {
                     dbConnection.Open();
                     var ur = dbConnection.Query<User>("UserRegistration",
-                    new{UserName = user.UserName, Email = user.Email, City = user.City, Password = user.Password},
-                    commandType:CommandType.StoredProcedure);
+                    new { UserName = user.UserName, Email = user.Email, City = user.City, Password = user.Password },
+                    commandType: CommandType.StoredProcedure);
 
                     if (ur != null && ur.FirstOrDefault().Response == "Register Successfully")
                     {

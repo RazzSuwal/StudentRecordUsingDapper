@@ -1,0 +1,37 @@
+@model StudentRecordUsingDapper.Models.Login;
+@* @{
+    Layout = null;
+} *@
+<h1>Login</h1>
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" id="Id" name="Id">
+            <div class="row mb-3">
+                <div class="col-12 mb-2">
+                    <label for="UserName">Enter Your UserName</label>
+                    <input type="text" name="UserNAme" id="UserName">
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="Password">Enter Your Password</label>
+                    <input type="password" name="Password" id="Password">
+                </div>
+                
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        @{
+            @if(TempData["SuccessMsg"] != null){
+            <h2 class="bg-success">@TempData["SuccessMsg"]</h2>
+                
+            }
+            @if(TempData["ErrorMsg"] != null){
+            <h2 class="bg-danger">@TempData["ErrorMsg"]</h2>
+                
+            }
+        }
+    </div>
+</div>
